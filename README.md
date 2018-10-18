@@ -1,13 +1,10 @@
-# microgear-html5
+# microgear-react-native
 
-microgear-html5 is a JavaScript library that will transform any browser into a NETPIE connected client. It enables web browsers to communicate with other NETPIE devices. For more details on the NETPIE Platform, please visit https://netpie.io . 
-## Browser Support
-- Chrome
-- Firefox
-- Opera
-- Safari
-- Internet Explorer
-- Edge
+microgear-react-native is a JavaScript library that will transform any React Native app into a NETPIE connected client. It enables app to communicate with other NETPIE devices. For more details on the NETPIE Platform, please visit https://netpie.io . 
+## Support
+- iOS
+- Android
+- Expo and Standalone 
 
 ## Outgoing Network Port
 Make sure ther following ports are allowed to connect from your network.
@@ -27,21 +24,17 @@ $ cd microgear-html5
 $ npm install
 $ npm run build
 ```
-The library file will be located at build/microgear.js. However, you can find the ready-to-use version from the CDN. Just add the following HTML tag to your Javascript code:
-
-```html
-<script src="https://cdn.netpie.io/microgear.js"></script>
-```
+The library file will be located at build/microgear.js. 
 
 Usage Example
 ```js
-<script src="https://cdn.netpie.io/microgear.js"></script>
-<script>
+import { Microgear } from './src';
+
   const APPID     = <APPID>;
   const APPKEY    = <APPKEY>;
   const APPSECRET = <APPSECRET>;
 
-	var microgear = Microgear.create({
+	const microgear = Microgear({
 		key: APPKEY,
 		secret: APPSECRET,
 		alias : "myhtml"         /*  optional  */
@@ -53,7 +46,7 @@ Usage Example
 
 	microgear.on('connected', function() {
 		microgear.setAlias('htmlgear');    /* alias can be renamed anytime with this function */
-		document.getElementById("data").innerHTML = "Now I am connected with netpie...";
+		console.log("Now I am connected with netpie...");
 		setInterval(function() {
 			microgear.chat("htmlgear","Hello from myself at "+Date.now());
 		},5000);
@@ -68,9 +61,6 @@ Usage Example
 	});
 
 	microgear.connect(APPID);
-</script>
-
-<div id="data">_____</div>
 ```
 
 ## Library Usage
@@ -84,7 +74,7 @@ Usage Example
 
  
 ```js
-var microgear = MicroGear.create({
+const microgear = MicroGear({
     key : "sXfqDcXHzbFXiLk",
     secret : "DNonzg2ivwS8ceksykGntrfQjxbL98",
     alias : "myhtml"
